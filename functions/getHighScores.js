@@ -1,16 +1,19 @@
-const Airtable = require('airtable');
-
-Airtable.configure({
-    apiKey: 'keyhge90gGlie1MHg',
-});
-const base = Airtable.base('appUktO6kMOEHMMnf');
-const table = base.table('Table1');
+const { table, getHighScores } = require('./utils/airtable');
 
 exports.handler = async (event) => {
-    const records = await table.select({}).firstPage();
-
-    return {
-        statusCode: 200,
-        body: JSON.stringify(records),
-    };
+    try {
+        const records = await getHighScores(true);
+        return {
+            statusCode: 200,
+            body: JSON.stringify(records),
+        };
+    } catch (err) {
+        console.error(err);
+        return {
+            statusCode: 500,
+            body: JSON.stringify({
+                err: 'Failed to query records in Airtable',
+            }),
+        };
+    }
 };
