@@ -7,4 +7,5 @@ export const Container = styled.div`
     margin: 0px auto;
     margin-top: 20px;
     max-width: 800px;
-`
+    text-align: center;
+`;
