@@ -24,7 +24,6 @@ exports.handler = async (event) => {
             typeof lowestRecord.fields.score === 'undefined' ||
             score > lowestRecord.fields.score
         ) {
-            //update this record with the incoming score
             const updatedRecord = {
                 id: lowestRecord.id,
                 fields: { name, score },

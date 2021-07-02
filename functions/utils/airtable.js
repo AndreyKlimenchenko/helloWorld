@@ -9,11 +9,12 @@ const base = Airtable.base(process.env.AIRTABLE_BASE);
 const table = base.table(process.env.AIRTABLE_TABLE);
 
 const getHighScores = async (filterEmptyRecords) => {
+    console.log(filterEmptyRecords);
     const queryOptions = {
-        sort: [{ field: 'score', direction: 'desc' }],
+        sort: [{ field: 'Score', direction: 'desc' }],
     };
     if (filterEmptyRecords) {
-        queryOptions.filterByFormula = `AND(name != "", score > 0)`;
+        queryOptions.filterByFormula = `AND(Name != "", Score > 0)`;
     }
     const records = await table.select(queryOptions).firstPage();
     const formattedRecords = records.map((record) => ({

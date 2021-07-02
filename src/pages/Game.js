@@ -21,7 +21,8 @@ export default function Game({history}) {
         setScore(0);
         const currentTime = new Date();
         const interval = setInterval(() => updateTime(currentTime), 1);
-        return() => clearInterval(interval);
+        return() => {clearInterval(interval);
+        };
     }, []);
 
     const updateTime = (startTime) => {
