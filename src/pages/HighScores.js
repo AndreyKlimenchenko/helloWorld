@@ -17,6 +17,7 @@ export default function HighScores() {
         };
         loadHighScores();
     }, []);
+    console.log(highScores);
     return (
         <div>
             <h1>HighScores</h1>
