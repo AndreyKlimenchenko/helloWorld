@@ -1,11 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
 
-const isDarkThemeEnabled = false;
 export const GlobalStyle = createGlobalStyle`
+
 :root {
     --main-bg-color: ${(props) => props.theme.mainBgColor};
-    --main-text-color: ${isDarkThemeEnabled ? '#f9f9f9' : '#333'};
-    --accent-color: #e16365;
+    --main-text-color: ${(props) => props.theme.mainTextColor};
+    --accent-color: ${(props) => props.theme.accent};
 }
 * {
     box-sizing: border-box;

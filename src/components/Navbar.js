@@ -1,29 +1,20 @@
+
 import React from 'react';
-import {Link} from "react-router-dom";
+import { Link } from 'react-router-dom';
 import {
+    StyledNavItems,
     StyledNavbar,
     StyledNavBrand,
-    StyledNavItems,
-    StyledLink
+    StyledLink,
+    // StyledButtonLink,
 } from '../styled/Navbar';
 import { Accent } from '../styled/Random';
 import { useAuth0 } from "@auth0/auth0-react";
-
-export default function Navbar() {
+export default function Navbar({ toggleTheme }) {
     const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
-    const LoginButton = () => {
-        return <button onClick={() => loginWithRedirect()}>Log In</button>;
-      };
-    const LogoutButton = () => {
-    return (
-        <button onClick={() => logout({ returnTo: window.location.origin })}>
-        Log Out
-        </button>
-    );
-    };
     return (
         <StyledNavbar>
-            <StyledNavBrand>
+            <StyledNavBrand className="nav__brand">
                 <Link to="/">
                     Learn.Build.<Accent>Type.</Accent>
                 </Link>
@@ -33,23 +24,19 @@ export default function Navbar() {
                     <StyledLink to="/">Home</StyledLink>
                 </li>
                 <li>
-                    <StyledLink to="/highScores">HighScores</StyledLink>
+                    <StyledLink to="/highScores">High Scores</StyledLink>
                 </li>
                 {!isAuthenticated && (
                     <li>
-                        <LoginButton></LoginButton>
+                        <button onClick={loginWithRedirect}>Login</button>
                     </li>
                 )}
                 {isAuthenticated && (
-                    <>
-                        <li>
-                            <StyledLink to="/profile">Profile</StyledLink>
-                        </li>
-                        <li>
-                            <LogoutButton></LogoutButton>
-                        </li>
-                    </>
+                    <li>
+                        <button onClick={logout}>Logout</button>
+                    </li>
                 )}
+                <button onClick={toggleTheme}>Toggle Theme</button>
             </StyledNavItems>
         </StyledNavbar>
     );
