@@ -1,12 +1,15 @@
-import React from "react";
-import { useAuth0 } from "@auth0/auth0-react";
+import React, {useEffect} from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const Profile = () => {
-  const { user, isAuthenticated, isLoading } = useAuth0();
+  const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
 
-  if (isLoading) {
-    return <div>Loading ...</div>;
-  }
+  useEffect(() => {
+    const getToken = async () => {
+      const token = await getAccessTokenSilently();
+    };
+    getToken();
+  }, []);
 
   return (
     isAuthenticated && (

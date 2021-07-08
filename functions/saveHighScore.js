@@ -1,14 +1,25 @@
 const { table, getHighScores } = require('./utils/airtable');
-
+const { getAccessTokenFromHeaders, validateAccessToken } = require('./utils/auth');
 exports.handler = async (event) => {
+    const token = getAccessTokenFromHeaders(event.headers);
+    let user = await validateAccessToken(token);
+    if(!user){
+        return {
+            statusCode: 401,
+            body: JSON.stringify({err: 'User is not authorized'
+            }),
+        };
+    }
+
     if (event.httpMethod !== 'POST') {
         return {
             statusCode: 405,
             body: JSON.stringify({ err: 'That method is not allowed' }),
         };
     }
+    const name = user['http://learnbuildtype/username'];
 
-    const { score, name } = JSON.parse(event.body);
+    const { score } = JSON.parse(event.body);
     if (typeof score === 'undefined' || !name) {
         return {
             statusCode: 400,

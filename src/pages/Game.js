@@ -8,7 +8,7 @@ import {
 import {Strong} from '../styled/Random';
 import { useScore } from '../contexts/ScoreContext';
 
-export default function Game({history}) {
+export default function Game ({history}) {
     const [score, setScore] = useScore();
     const MAX_SECONDS = 10;
     const [ms, setMs] = useState(0);

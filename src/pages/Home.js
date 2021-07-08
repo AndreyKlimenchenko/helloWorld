@@ -1,5 +1,5 @@
 import React from 'react';
-import CTA from '../styled/CTA';
+import { CTA } from '../styled/CTA';
 import { Accent, StyledTitle } from '../styled/Random';
 
 export default function Home() {
