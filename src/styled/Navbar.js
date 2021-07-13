@@ -29,6 +29,18 @@ export const StyledLink = styled(Link)`
     text-decoration: none;
     font-size: 1.2rem;
     transition: 200ms;
+
+    &:hover {
+        color: var(--accent-color);
+    }
+`;
+
+export const StyledButtonLink = styled.button`
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    background: none;
+
     &:hover {
         color: var(--accent-color);
     }
