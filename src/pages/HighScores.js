@@ -17,12 +17,12 @@ export default function HighScores() {
             }
         };
         loadHighScores();
-    }, []);
+    }, [highScores.length]);
     return (
         <div>
             <StyledTitle>HighScores</StyledTitle>
             <ScoresList>
-                {highScores?.map((score, index) => (
+                {highScores?.length && highScores?.map((score, index) => (
                     <ScoreLI key={score.id}>
                         {index + 1}. {score.fields.name} - {score.fields.score}
                     </ScoreLI>
