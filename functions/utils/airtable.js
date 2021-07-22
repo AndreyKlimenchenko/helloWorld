@@ -9,7 +9,6 @@ const base = Airtable.base(process.env.AIRTABLE_BASE);
 const table = base.table(process.env.AIRTABLE_TABLE);
 
 const getHighScores = async (filterEmptyRecords) => {
-    console.log(filterEmptyRecords);
     const queryOptions = {
         sort: [{ field: 'score', direction: 'desc' }],
     };

@@ -20,6 +20,7 @@ export default function HighScores() {
     }, [highScores.length]);
     return (
         <div>
+            {process.env.AIRTABLE_API_KEY}
             <StyledTitle>HighScores</StyledTitle>
             <ScoresList>
                 {highScores?.length && highScores?.map((score, index) => (
