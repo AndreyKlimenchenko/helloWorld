@@ -18,7 +18,6 @@ export default function GameOver({ history }) {
         const saveHighScore = async () => {
             try {
                 const token = await getAccessTokenSilently();
-                console.log(user)
                 const options = {
                     method: 'POST',
                     body: JSON.stringify({ name: user.nickname, score }),
@@ -30,7 +29,6 @@ export default function GameOver({ history }) {
                     '/.netlify/functions/saveHighScore',
                     options
                 );
-                console.log(res)
                 const data = await res.json();
                 if (data.id) {
                     setScoreMessage('Congrats! You got a high score!!');

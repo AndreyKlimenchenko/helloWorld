@@ -30,16 +30,18 @@ function App() {
             </Loader>
             )}
             {!loading && (
-            <Container>
+            <>
               <Navbar toggleTheme={toggleTheme} />
-              <Switch>
-                <Route path="/game" component={Game} />
-                <Route path="/highScores" component={HighScores} />
-                <Route path="/gameOver" component={GameOver} />
-                <Route exact path="/" component={Home} />
-                <Route path="/profile" component={Profile}/>
-              </Switch>
-            </Container>
+              <Container>
+                <Switch>
+                  <Route path="/game" component={Game} />
+                  <Route path="/highScores" component={HighScores} />
+                  <Route path="/gameOver" component={GameOver} />
+                  <Route exact path="/" component={Home} />
+                  <Route path="/profile" component={Profile}/>
+                </Switch>
+              </Container>
+            </>
             )}
         </Main>
       </ThemeProvider>

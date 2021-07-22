@@ -5,9 +5,9 @@ import { Accent, StyledTitle } from '../styled/Random';
 export default function Home() {
     return (
         <div>
-            <StyledTitle>Ready to type?!</StyledTitle>
+            <StyledTitle>Готовы печатать?!</StyledTitle>
             <CTA to="/game">
-                Click or type <Accent>'s'</Accent> to start playing!
+                Нажмите, чтобы начать!
             </CTA>
         </div>
     );

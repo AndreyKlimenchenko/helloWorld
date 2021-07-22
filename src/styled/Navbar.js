@@ -6,6 +6,8 @@ export const StyledNavbar = styled.nav`
     display: grid;
     grid-template-columns: 1fr auto;
     padding: 20px;
+    background-color: var(--header-color);
+    width: 100%;
 `;
 
 export const StyledNavBrand = styled.div`
