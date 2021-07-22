@@ -1,7 +1,9 @@
 const { table, getHighScores } = require('./utils/airtable');
 const { getAccessTokenFromHeaders, validateAccessToken } = require('./utils/auth');
 exports.handler = async (event) => {
+    console.log(event)
     const token = getAccessTokenFromHeaders(event.headers);
+    console.log(token)
     let user = await validateAccessToken(token);
     if(!user){
         return {
@@ -18,7 +20,7 @@ exports.handler = async (event) => {
         };
     }
     const name = user['http://learnbuildtype/username'];
-
+console.log(name);
     const { score } = JSON.parse(event.body);
     if (typeof score === 'undefined' || !name) {
         return {

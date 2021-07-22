@@ -33,9 +33,14 @@ export default function Navbar({ toggleTheme }) {
                     </li>
                 )}
                 {isAuthenticated && (
-                    <li>
-                        <StyledButtonLink onClick={logout}>Logout</StyledButtonLink>
-                    </li>
+                    <>
+                        <li>
+                            <StyledLink to="/profile">Profile</StyledLink>
+                        </li>
+                        <li>
+                            <StyledButtonLink onClick={logout}>Logout</StyledButtonLink>
+                        </li>
+                    </>
                 )}
                 <StyledButton onClick={toggleTheme}>Toggle Theme</StyledButton>
             </StyledNavItems>

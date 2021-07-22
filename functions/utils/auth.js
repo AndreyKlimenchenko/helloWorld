@@ -4,7 +4,7 @@ const {promisify} = require('util');
 
 const jwksClient = jwks({
     jwksUri: `https://${process.env.AUTH0_DOMAIN}/.well-known/jwks.json`
-})
+});
 
 let signingKey;
 const getAccessTokenFromHeaders = (headers) => {

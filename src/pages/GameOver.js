@@ -8,7 +8,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 export default function GameOver({ history }) {
     const [score] = useScore();
     const [scoreMessage, setScoreMessage] = useState('');
-    const {getAccessTokenSilently, isAuthenticated} = useAuth0();
+    const {getAccessTokenSilently, isAuthenticated, user} = useAuth0();
 
     if (score === -1) {
         history.push('/');
@@ -18,9 +18,10 @@ export default function GameOver({ history }) {
         const saveHighScore = async () => {
             try {
                 const token = await getAccessTokenSilently();
+                console.log(user)
                 const options = {
                     method: 'POST',
-                    body: JSON.stringify({ name: 'asdasfsd', score }),
+                    body: JSON.stringify({ name: user.nickname, score }),
                     headers:{
                         Authorization: `Bearer ${token}`,
                     },
@@ -29,6 +30,7 @@ export default function GameOver({ history }) {
                     '/.netlify/functions/saveHighScore',
                     options
                 );
+                console.log(res)
                 const data = await res.json();
                 if (data.id) {
                     setScoreMessage('Congrats! You got a high score!!');

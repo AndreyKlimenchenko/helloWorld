@@ -22,7 +22,7 @@ export default function HighScores() {
         <div>
             <StyledTitle>HighScores</StyledTitle>
             <ScoresList>
-                {highScores.map((score, index) => (
+                {highScores?.map((score, index) => (
                     <ScoreLI key={score.id}>
                         {index + 1}. {score.fields.name} - {score.fields.score}
                     </ScoreLI>
