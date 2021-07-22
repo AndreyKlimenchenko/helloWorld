@@ -3,10 +3,10 @@ require('dotenv').config();
 const Airtable = require('airtable');
 
 Airtable.configure({
-    apiKey: 'keyhge90gGlie1MHg',
+    apiKey: process.env.AIRTABLE_API_KEY,
 });
-const base = Airtable.base('appUktO6kMOEHMMnf');
-const table = base.table('Table1');
+const base = Airtable.base(process.env.AIRTABLE_BASE);
+const table = base.table(process.env.AIRTABLE_TABLE);
 
 const getHighScores = async (filterEmptyRecords) => {
     const queryOptions = {
