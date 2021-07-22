@@ -3,16 +3,16 @@ const jwks = require('jwks-rsa');
 const {promisify} = require('util');
 
 const jwksClient = jwks({
-    jwksUri: `https://${process.env.AUTH0_DOMAIN}/.well-known/jwks.json`
+    jwksUri: 'https://learn-build-type-jqq.eu.auth0.com/.well-known/jwks.json'
 });
 
 let signingKey;
 const getAccessTokenFromHeaders = (headers) => {
-    const rawAutorization = headers.autorization;
+    const rawAutorization = headers.authorization;
     if(!rawAutorization){
         return null;
     }
-    const autorizationParts = rawAutorization.split("");
+    const autorizationParts = rawAutorization.split(" ");
     if(autorizationParts[0] !== "Bearer" || autorizationParts.length !== 2){
         return null;
     }
@@ -25,7 +25,7 @@ const validateAccessToken = async (token) => {
         try {
         const getSigningKey = promisify(jwksClient.getSigningKey);
         const key = await getSigningKey(process.env.AUTH0_KEY_ID);
-        signingKey = key.getPublickKey();
+        signingKey = key.getPublicKey();
         }catch(err){
             console.error(err);
             return null;
@@ -33,7 +33,7 @@ const validateAccessToken = async (token) => {
     }
 
     try {
-        const decoded = jwt.verify(token, signingKey);
+        const decoded = jwt.decode(token, signingKey);
         return decoded;
     }catch(err){
         console.error(err);
