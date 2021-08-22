@@ -9,9 +9,10 @@ import {
     StyledButtonLink,
 } from '../styled/Navbar';
 import { Accent } from '../styled/Random';
-import { useAuth0 } from "@auth0/auth0-react";
 import { StyledButton } from "../styled/Buttons";
-export default function Navbar({ toggleTheme }) {
+import { useAuth0 } from "@auth0/auth0-react";
+
+export default function Navbar({ toggleTheme, theme }) {
     const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
     return (
         <StyledNavbar>
@@ -42,7 +43,9 @@ export default function Navbar({ toggleTheme }) {
                         </li>
                     </>
                 )}
-                <StyledButton onClick={toggleTheme}>Toggle Theme</StyledButton>
+                <StyledButton onClick={toggleTheme} variant="contained" color="primary">
+                    {theme === 'light' ? 'Light Theme' : 'Dark Theme'}
+                </StyledButton>
             </StyledNavItems>
         </StyledNavbar>
     );

@@ -6,7 +6,8 @@ export const GlobalStyle = createGlobalStyle`
     --main-bg-color: ${(props) => props.theme.mainBgColor};
     --main-text-color: ${(props) => props.theme.mainTextColor};
     --accent-color: ${(props) => props.theme.accent};
-    --header-color: ${(props) => props.theme.headerColor}
+    --header-color: ${(props) => props.theme.headerColor};
+    --user-info-color: ${(props) => props.theme.userInfoColor};
 }
 * {
     box-sizing: border-box;

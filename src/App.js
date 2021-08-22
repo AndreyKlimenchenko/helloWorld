@@ -31,7 +31,7 @@ function App() {
             )}
             {!loading && (
             <>
-              <Navbar toggleTheme={toggleTheme} />
+              <Navbar toggleTheme={toggleTheme} theme={theme} />
               <Container>
                 <Switch>
                   <Route path="/game" component={Game} />
