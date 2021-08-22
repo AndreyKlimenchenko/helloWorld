@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { ScoresList, ScoreLI } from '../styled/HighScores';
-import { StyledTitle, SpinnerContainer } from '../styled/Random';
+import { StyledTitle, SpinnerContainer, Number } from '../styled/Random';
 
 export default function HighScores() {
 
@@ -30,7 +30,7 @@ export default function HighScores() {
                 <ScoresList>
                 {highScores?.length ? highScores?.map((score, index) => (
                     <ScoreLI key={score.id}>
-                        {index + 1}. {score.fields.name} - {score.fields.score}
+                        <Number>{index + 1}.</Number> {score.fields.name} - {score.fields.score}
                     </ScoreLI>
                 )) : null}
             </ScoresList>

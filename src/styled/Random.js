@@ -12,6 +12,9 @@ export const StyledTitle = styled.h1`
     margin-bottom: 2rem;
     margin-top: 3rem;
     text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px var(--header-color), 0 0 30px var(--header-color), 0 0 40px var(--header-color), 0 0 55px var(--header-color), 0 0 75px var(--header-color);
+    @media (max-width: 768px) {
+        font-size: 3.25rem;
+    }
 `;
 
 export const Strong = styled.strong`
@@ -20,6 +23,9 @@ export const Strong = styled.strong`
 
 export const GifImg = styled.img`
     margin-top: 100px;
+    @media (max-width: 768px) {
+        width: 100%;
+    }
 `;
 
 export const Avatar = styled.img`
@@ -45,4 +51,8 @@ export const Info = styled.div`
 
 export const SpinnerContainer = styled.div`
     margin-top: 120px;
+`;
+
+export const Number = styled.span`
+    color: var(--user-info-color);
 `;
